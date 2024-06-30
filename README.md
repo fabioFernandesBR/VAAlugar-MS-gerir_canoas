@@ -17,7 +17,13 @@ Também disponibiliza a rota /excluir, via REST - DELETE. Ao chamar esta rota, b
 ## Parâmetros
 
 ## Criação do banco de dados: apenas 1 tabela!
-CREATE TABLE reservas ( id_reserva INTEGER PRIMARY KEY, id_canoa INTEGER NOT NULL, id_usuario INTEGER NOT NULL, data STRING NOT NULL );./env
+CREATE TABLE canoas (
+    id_canoa  INTEGER PRIMARY KEY,
+    nome      TEXT,
+    tipo      TEXT,
+    dono      TEXT,
+    id_local  INTEGER NOT NULL
+);
 
 ## Instalação
 Para instalar: use o arquivo requirements.txt para instalar os módulos. No windows: pip install -r requirements.txt Recomendo instalação em um ambiente virtual
