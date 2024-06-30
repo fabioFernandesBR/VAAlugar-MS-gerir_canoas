@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional, List
-from model.canoas import *
+from database import Canoa
 
 
 # BaseModel é a classe base do Pydantic.
@@ -44,25 +44,6 @@ class SchemaVisualizacaoCanoa(BaseModel):
     id_local: int = 1
 
 
-'''
-class SchemaBuscaReservaPorUsuario(BaseModel):
-    """ 
-    Define como deve ser a estrutura que representa a busca, 
-    que será feita apenas com base no ID do usuario.
-
-    Método GET
-    """
-    usuario: int = 21999999999 #Por padrão, sugiro 21999999999    
-
-
-
-class SchemaListagemReservas(BaseModel): 
-    """ Define como uma listagem de reservas será retornada.
-    """
-    reservas:List[SchemaVisualizacaoReserva]
-'''
-
-
 
 def apresenta_canoa(canoa: Canoa):
     """ Retorna uma representação da canoa seguindo o schema definido em
@@ -75,20 +56,3 @@ def apresenta_canoa(canoa: Canoa):
         "dono": canoa.dono,
         "id-local": canoa.id_local
     }
-
-'''
-def apresenta_reservas(reservas: list[Reserva]):
-    """ Retorna uma representação das reservas seguindo o schema definido em
-        SchemaListagemReservas.
-    """
-    result = []
-    for reserva in reservas:
-        result.append({
-            "id-reserva": reserva.id_reserva,
-            "usuario": reserva.id_usuario,
-            "canoa": reserva.id_canoa,
-            "data": reserva.data  
-        })
-
-    return {"reservas": result}
-''' 

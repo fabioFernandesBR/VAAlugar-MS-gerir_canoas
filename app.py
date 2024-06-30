@@ -3,10 +3,11 @@ from flask import redirect
 from flask_graphql import GraphQLView
 from sqlalchemy.exc import IntegrityError
 
-from model import Session, Canoa
-from logger import logger
+
+from database import Session, Canoa
 from schemas import *
-from schema_graphql.schemaQL import schema
+from logger import logger
+from schemas_graphQL import schema
 
 from flask_cors import CORS
 

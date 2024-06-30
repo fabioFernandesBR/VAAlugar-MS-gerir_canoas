@@ -35,8 +35,8 @@ Certifique-se de ter o Docker instalado e em execução em sua máquina.
 
 Navegue até o diretório que contém o Dockerfile e o requirements.txt no terminal. Execute como administrador o seguinte comando para construir a imagem Docker:
 
-$ docker build -t rest-api .
+$ docker build -t ms-canoas .
 Uma vez criada a imagem, para executar o container basta executar, como administrador, seguinte o comando:
 
-$ docker run -p 5000:5000 rest-api
+$ docker run -p 5000:5000 ms-canoas
 Uma vez executando, para acessar a API, basta abrir o http://localhost:5002/#/ no navegador.
