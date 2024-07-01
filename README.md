@@ -2,9 +2,9 @@
 
 Repositório do projeto de Microsserviço (MS) que executa tarefa de gestão das canoas, tais como criar, excluir e consultar.
 
-ATENÇÃO: Docker configurado para rodar na porta 5002.
+# ATENÇÃO: Docker configurado para rodar na porta 5002.
 
-O que este microsserviço faz
+### O que este microsserviço faz:
 Este MS gerencia as canoas.
 
 Disponibiliza uma rota /criar, para comunicação via REST, usando o método POST. Ao chamar esta rota, informar via JSON: 
