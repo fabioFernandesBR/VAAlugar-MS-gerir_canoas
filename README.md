@@ -68,14 +68,7 @@ curl -X 'DELETE' \
   "nome": "Antares",
   "tipo": "OC1"
 }
- access-control-allow-origin: http://127.0.0.1:5002 
- connection: close 
- content-length: 74 
- content-type: application/json 
- date: Mon,01 Jul 2024 00:13:10 GMT 
- server: Werkzeug/3.0.3 Python/3.12.4 
- vary: Origin 
-
+ 
  ## Consultas
  Como usamos o graphql, o usuário tem flexibilidade para especificar quais atributos ele quer receber. A seguir exemplos:
 
