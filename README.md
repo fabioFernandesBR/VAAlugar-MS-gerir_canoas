@@ -6,33 +6,21 @@ Em relação à versão anterior:
 - a pesquisa pelo GraphQL toma apenas 1 string e faz as busca nas 4 variáveis de localização.
 - foi adicionada uma rota para atualização das informações sobre as avaliações.
 
-ATENÇÃO: Docker configurado para rodar na porta 5002.
+# ATENÇÃO: Docker configurado para rodar na porta 5002.
 
-O que este microsserviço faz
+### O que este microsserviço faz:
 Este MS gerencia as canoas.
 
-Disponibiliza as seguintes rota para comunicação via REST:
-/criar: usando o método POST. Ao chamar esta rota, informar via JSON conforme definido na seção Parâmetros. O MS vai registrar no banco de dados SQLite (exclusivo deste MS) e retornar a confirmação da criação da canoa ou algum erro.
+Disponibiliza uma rota /criar, para comunicação via REST, usando o método POST. Ao chamar esta rota, informar via JSON: 
+O MS vai registrar no banco de dados SQLite (exclusivo deste MS) e retornar a confirmação da criação da canoa ou algum erro.
 
-/excluir: usando o método DELETE. Ao chamar esta rota, informar via JSON conforme definido na seção Parâmetros. O MS vai excluir do banco de dados SQLite e retornar a confirmação da exclusão da canoa ou algum erro.
+Com a rota /consultar, diferentes parâmetros podem ser passados via GraphQL, para consulta das canoas disponíveis.
 
-/atualizaravaliacao: usando o método PATCH. Ao chamar esta rota, informar via JSON conforme definido na seção Parâmetros. O MS vai atualizar o banco de dados SQLite e retornar a a representação da canoa com os novos valores ou algum erro.
-
-Com a rota /graphql, diferentes parâmetros podem ser passados via GraphQL, para consulta das canoas disponíveis:
-- query se chama canoas.
-- 2 critérios de busca são habilitados: local e tipos. Local é string, e pesquisa nos campos relacionados à localização: estado, município, bairro e referência. Basta que 1 desses campos contenha a string pesquisada e a canoa será retornada pela query. Tipos é habilitado como lista, de modo que pode-se pesquisar por mais de um valor, como ["OC1", "OC2"], por exemplo.
-- Os tipos são as características das canoas, como OC2, OC4 e OC6. São strings e devem ser passadas como lista.
-
-
+Também disponibiliza a rota /excluir, via REST - DELETE. Ao chamar esta rota, basta informar o id da canoa e o registro correspondente será excluído do banco de dados.
 
 ## Parâmetros
 
-
-
-
-
-
-## Criação do banco de dados: 1 tabela!!
+## Criação do banco de dados: apenas 1 tabela!
 CREATE TABLE canoas (
     id_canoa         INTEGER PRIMARY KEY AUTOINCREMENT,
     nome             TEXT,
@@ -48,7 +36,7 @@ CREATE TABLE canoas (
     qtde_avaliacoes  INTEGER
 );
 
-## Instalação
+# Instalação
 Para instalar: use o arquivo requirements.txt para instalar os módulos. No windows: pip install -r requirements.txt Recomendo instalação em um ambiente virtual
 
 Para executar localmente, em ambiente Windows: flask run --host 0.0.0.0 --port 5000 --reload
@@ -61,6 +49,5 @@ Navegue até o diretório que contém o Dockerfile e o requirements.txt no termi
 docker build -t ms-canoas-2 .
 Uma vez criada a imagem, para executar o container basta executar, como administrador, seguinte o comando:
 
-docker run -p 5002:5002 ms-canoas-2
-
+$ docker run -p 5000:5000 ms-canoas
 Uma vez executando, para acessar a API, basta abrir o http://localhost:5002/#/ no navegador.
